@@ -1,11 +1,54 @@
 const { Router } = require("express");
-const { getPokemons } = require("../controllers/pokemons");
+const { Pokemon, Type } = require("../db");
+const { getPokemons, getPokemonById } = require("../controllers/pokemons");
+const { getTypes } = require("../controllers/types");
 
 const router = Router();
 
 router.get("/", async (req, res, next) => {
+  const name = req.query.name;
   try {
-    res.send(await getPokemons());
+    const pokemons = await getPokemons(name);
+
+    res.send(pokemons);
+  } catch (error) {
+    res
+      .status(404)
+      .send("Sorry, that Pokemon does not exist. Try typing the name again!");
+    console.log(error);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    res.send(await getPokemonById(id));
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/", async (req, res, next) => {
+  const { name, health, attack, defense, speed, height, weight, types } =
+    req.body;
+  await getTypes();
+  try {
+    const newPokemon = await Pokemon.create({
+      name,
+      health,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+    });
+    const typesDb = await Type.findAll({
+      where: {
+        name: types,
+      },
+    });
+    newPokemon.addType(typesDb);
+    return res.status(200).send("Pokemon created successfully!");
   } catch (error) {
     next(error);
   }
