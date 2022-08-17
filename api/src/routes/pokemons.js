@@ -8,9 +8,7 @@ const router = Router();
 router.get("/", async (req, res, next) => {
   const name = req.query.name;
   try {
-    const pokemons = await getPokemons(name);
-
-    res.send(pokemons);
+    res.send(await getPokemons(name));
   } catch (error) {
     res
       .status(404)

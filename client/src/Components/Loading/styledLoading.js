@@ -4,10 +4,12 @@ import Loading from "../../Assets/Loading.gif";
 
 export const LoadingDiv = styled.div`
   background-image: url(${Loading});
-  height: 100vh;
+  background-position: left;
+  /* margin-top: -10vh; */
+  height: 90vh;
   & h1 {
     /* display: table; */
-    border-radius: 25px;
+    /* border-radius: 25px; */
     position: absolute;
     top: 16rem;
     left: 50%;

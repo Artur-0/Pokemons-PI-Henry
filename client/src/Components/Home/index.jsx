@@ -14,7 +14,7 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     dispatch(getPokemons());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     pokemons.length ? setIsLoading(false) : setIsLoading(true);
   }, [pokemons]);

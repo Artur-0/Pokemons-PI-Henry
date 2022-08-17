@@ -28,6 +28,7 @@ export const Item = styled.div`
   background: linear-gradient(315deg, #756213 10%, #000000 99%);
   margin: 20px;
   overflow: hidden;
+  align-items: center;
   & p {
     color: black;
     font-size: small;
