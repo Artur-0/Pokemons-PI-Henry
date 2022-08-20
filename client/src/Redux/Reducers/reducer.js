@@ -62,7 +62,13 @@ export const reducer = (state = initalState, { type, payload }) => {
     case CLEAN_POKEMONS:
       return {
         ...state,
+        pokemons: payload,
+        pokemon: payload,
         filteredPokemons: payload,
+        types: payload,
+        page: [0, 12],
+        pageNumber: 1,
+        newPokemon: payload,
       };
     case GET_TYPES:
       return {
@@ -70,16 +76,25 @@ export const reducer = (state = initalState, { type, payload }) => {
         types: payload,
       };
     case SORT_BY_NAME:
-      let sortedByName = state.pokemons;
+      let sortedByName = state.filteredPokemons.length
+        ? state.filteredPokemons
+        : state.pokemons;
       payload === "asc"
         ? sortedByName.sort((a, b) => a.name.localeCompare(b.name))
         : sortedByName.sort((a, b) => b.name.localeCompare(a.name));
-      return {
-        ...state,
-        pokemons: sortedByName,
-      };
+      return state.filteredPokemons.length
+        ? {
+            ...state,
+            filteredPokemons: sortedByName,
+          }
+        : {
+            ...state,
+            pokemons: sortedByName,
+          };
     case SORT_BY_ATTACK:
-      let sortedByAttack = state.pokemons;
+      let sortedByAttack = state.filteredPokemons.length
+        ? state.filteredPokemons
+        : state.pokemons;
       payload === "asc"
         ? sortedByAttack.sort((a, b) => {
             return a.attack - b.attack;
@@ -87,10 +102,15 @@ export const reducer = (state = initalState, { type, payload }) => {
         : sortedByAttack.sort((a, b) => {
             return b.attack - a.attack;
           });
-      return {
-        ...state,
-        pokemons: sortedByAttack,
-      };
+      return state.filteredPokemons.length
+        ? {
+            ...state,
+            filteredPokemons: sortedByAttack,
+          }
+        : {
+            ...state,
+            pokemons: sortedByAttack,
+          };
     case CHANGE_PAGE:
       const page =
         payload === "next"

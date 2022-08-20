@@ -7,18 +7,21 @@ export const Nav = styled.nav`
   font-family: "Fredoka One", cursive;
   & ul {
     display: flex;
-    margin-top: -12vh;
+    margin-top: -13vh;
     margin-left: 65vw;
 
     color: white;
   }
   & li {
     padding: 30px;
-
     list-style: none;
+  }
+  & a {
+    color: aliceblue;
+    text-decoration: none;
   }
   & img {
     margin-left: -86vw;
-    height: 50px;
+    height: 47px;
   }
 `;

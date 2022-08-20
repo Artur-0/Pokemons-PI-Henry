@@ -11,7 +11,7 @@ function Pokemons() {
   const page = state.page;
 
   return (
-    <HomeStyle>
+    <>
       <Buttons />
       <Card>
         {state.filteredPokemons.length
@@ -39,7 +39,7 @@ function Pokemons() {
             })}
       </Card>
       <Pagination />
-    </HomeStyle>
+    </>
   );
 }
 

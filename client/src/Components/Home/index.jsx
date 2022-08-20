@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../Redux/Actions/actions";
 import Loading from "../Loading";
 import Pokemons from "../Pokemons";
-// import { HomeStyle } from "../Pokemons/styledPokemons";
+import { HomeStyle } from "./styledHome";
 
 function Home() {
   const dispatch = useDispatch();
@@ -13,13 +13,13 @@ function Home() {
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    dispatch(getPokemons());
-  }, [dispatch]);
+    !pokemons.length && dispatch(getPokemons());
+  }, [dispatch, pokemons.length]);
   useEffect(() => {
     pokemons.length ? setIsLoading(false) : setIsLoading(true);
   }, [pokemons]);
 
-  return <div>{!isLoading ? <Pokemons /> : <Loading />}</div>;
+  return <HomeStyle>{!isLoading ? <Pokemons /> : <Loading />}</HomeStyle>;
 }
 
 export default Home;

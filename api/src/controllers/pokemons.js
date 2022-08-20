@@ -20,7 +20,7 @@ const getPokemons = async (name) => {
     );
     return {
       id: pokemon.data.id,
-      image: pokemon.data.sprites.other.dream_world.front_default,
+      image: pokemon.data.sprites.other["official-artwork"].front_default,
       name: pokemon.data.name,
       types: pokemon.data.types.map((t) => t.type.name),
       health: pokemon.data.stats[0].base_stat,

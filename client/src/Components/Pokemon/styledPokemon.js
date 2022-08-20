@@ -4,27 +4,43 @@ import pokeBackground from "../../Assets/pikachu-searchingjpg.jpg";
 
 export const Style = styled.div`
   background-image: url(${pokeBackground});
-  display: grid;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
   height: 90vh;
-  & img {
-    margin-top: 10vh;
-    width: 100px;
-    margin-right: 70vw;
-  }
+  /* margin-top: -5vh; */
 `;
 
 export const Card = styled.div`
-  /* display: grid; */
-
-  display: table;
-  background: linear-gradient(315deg, #756213 10%, #000000 99%);
+  /* background: linear-gradient(315deg, #756213 10%, #000000 99%); */
   font-family: "Fredoka One", cursive;
+  /* border: 2px solid black; */
+  position: absolute;
+  margin-top: 2.5vh;
+  margin-left: 30vw;
   width: 30vw;
-  height: 40vh;
-  margin-top: -30vh;
-  margin-left: 35vw;
-  & p {
-    color: black;
-    font-size: small;
+`;
+
+export const Item = styled.div`
+  background: linear-gradient(315deg, #756213 10%, #000000 99%);
+  /* height: 90vh; */
+
+  /* display: flex; */
+  /* background-position: center; */
+  /* align-items: center;
+  justify-content: center; */
+  margin-top: 5vh;
+
+  & h1 {
+    color: aliceblue;
+  }
+  & li {
+    color: red;
+    list-style: none;
+    margin-right: 50px;
+  }
+  & img {
+    width: 100px;
+    height: 100px;
   }
 `;

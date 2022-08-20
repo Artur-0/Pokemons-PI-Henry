@@ -7,6 +7,7 @@ import {
   sortByAttack,
   sortByName,
 } from "../../Redux/Actions/actions";
+import { LiButton } from "./styledButtons";
 
 function Buttons() {
   const dispatch = useDispatch();
@@ -44,20 +45,20 @@ function Buttons() {
             Sort
           </button>
           <ul>
-            <li
+            <LiButton
               onClick={() => {
                 handleSort("name");
               }}
             >
               name
-            </li>
-            <li
+            </LiButton>
+            <LiButton
               onClick={() => {
                 handleSort("attack");
               }}
             >
               attack
-            </li>
+            </LiButton>
           </ul>
         </>
       ) : showButtonFilter ? (
@@ -66,15 +67,17 @@ function Buttons() {
             Filter
           </button>
           <ul>
-            <li onClick={() => dispatch(filterPokemons("created"))}>created</li>
-            <li onClick={() => dispatch(filterPokemons("existing"))}>
+            <LiButton onClick={() => dispatch(filterPokemons("created"))}>
+              created
+            </LiButton>
+            <LiButton onClick={() => dispatch(filterPokemons("existing"))}>
               existing
-            </li>
+            </LiButton>
             {state.types.map((t) => {
               return (
-                <li key={t.id} onClick={() => handleFilter(t.name)}>
+                <LiButton key={t.id} onClick={() => handleFilter(t.name)}>
                   {t.name}
-                </li>
+                </LiButton>
               );
             })}
           </ul>
