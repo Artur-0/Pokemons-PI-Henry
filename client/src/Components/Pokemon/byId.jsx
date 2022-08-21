@@ -13,15 +13,14 @@ function ById() {
   const pokemon = useSelector((state) => state.pokemon);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (pokemon) {
+    if (pokemon.name) {
       setIsLoading(false);
     }
   }, [pokemon]);
 
   useEffect(() => {
-    console.log(params.id);
     dispatch(getPokemonById(params.id));
-  }, [params]);
+  }, [params, dispatch]);
   return (
     <Style>
       {isLoading ? (

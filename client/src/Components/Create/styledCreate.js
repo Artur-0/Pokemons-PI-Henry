@@ -7,6 +7,12 @@ export const Style = styled.div`
   margin-top: 0vh;
   height: 90vh;
   font-family: "Fredoka One", cursive;
+  & h1 {
+    margin-top: 15vh;
+    position: absolute;
+    left: 8%;
+    display: block;
+  }
   /* width: 50vw; */
   & form {
     background-color: white;
@@ -14,22 +20,14 @@ export const Style = styled.div`
     box-shadow: 0 2px 5% rgba(0, 0, 0, 0.3);
     width: 38rem;
     max-width: 50%;
-    right: 0%;
-    padding-bottom: 3%;
+    right: 2%;
+    /* padding-bottom: 3%; */
     position: absolute;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     margin-top: 1%;
     padding-right: -3%;
-  }
-  & label {
-    /* position: absolute; */
-    /* border: 1px solid #ccc; Gray border */
-    /* box-sizing: border-box; */
-
-    /* justify-content: left; */
-    /* text-align: center; */
-    /* padding: 20px; */
-    /* box-sizing: border-box; */
+    color: white;
+    background: linear-gradient(315deg, #756213 10%, #000000 99%);
   }
 `;
 
@@ -45,12 +43,10 @@ export const Types = styled.div`
 export const FormDiv = styled.div`
   display: inline-block;
   font-size: smaller;
-
   & label {
-    padding: 1px;
+    padding: 5px;
     display: inline-block;
     /* margin-left: 5%; */
-    margin-bottom: 5px;
   }
   & input {
     border: 2px solid #f0f0f0;

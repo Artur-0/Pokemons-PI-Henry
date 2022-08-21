@@ -19,6 +19,7 @@ const initalState = {
   page: [0, 12],
   pageNumber: 1,
   newPokemon: [],
+  error: [],
 };
 
 export const reducer = (state = initalState, { type, payload }) => {
@@ -27,21 +28,24 @@ export const reducer = (state = initalState, { type, payload }) => {
       return {
         ...state,
         pokemons: payload,
+        error: [],
       };
     case SEARCH_POKEMON:
       return {
         ...state,
         pokemon: payload,
+        error: [],
       };
     case GET_BY_ID:
       return {
         ...state,
         pokemon: payload,
+        error: [],
       };
 
     case FILTER_POKEMONS:
       let filteredPokemons = [];
-      if (payload === "created" || payload === "existing") {
+      if (payload === "created" || payload === "original") {
         payload === "created"
           ? (filteredPokemons = state.pokemons.filter(
               (p) => typeof p.id !== "number"
@@ -55,10 +59,13 @@ export const reducer = (state = initalState, { type, payload }) => {
         );
       }
 
-      return {
-        ...state,
-        filteredPokemons: filteredPokemons,
-      };
+      return filteredPokemons.length
+        ? {
+            ...state,
+            filteredPokemons: filteredPokemons,
+            error: [],
+          }
+        : { ...state, filteredPokemons: [], error: [Math.random()] };
     case CLEAN_POKEMONS:
       return {
         ...state,
@@ -69,11 +76,13 @@ export const reducer = (state = initalState, { type, payload }) => {
         page: [0, 12],
         pageNumber: 1,
         newPokemon: payload,
+        error: [],
       };
     case GET_TYPES:
       return {
         ...state,
         types: payload,
+        error: [],
       };
     case SORT_BY_NAME:
       let sortedByName = state.filteredPokemons.length
@@ -86,10 +95,12 @@ export const reducer = (state = initalState, { type, payload }) => {
         ? {
             ...state,
             filteredPokemons: sortedByName,
+            error: [],
           }
         : {
             ...state,
             pokemons: sortedByName,
+            error: [],
           };
     case SORT_BY_ATTACK:
       let sortedByAttack = state.filteredPokemons.length
@@ -106,10 +117,12 @@ export const reducer = (state = initalState, { type, payload }) => {
         ? {
             ...state,
             filteredPokemons: sortedByAttack,
+            error: [],
           }
         : {
             ...state,
             pokemons: sortedByAttack,
+            error: [],
           };
     case CHANGE_PAGE:
       const page =

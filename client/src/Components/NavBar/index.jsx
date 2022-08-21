@@ -16,7 +16,7 @@ function NavBar() {
       <Search />
       <ul>
         <Link to="/pokemon">
-          <li>HOME</li>
+          <li onClick={() => dispatch(clean())}>HOME</li>
         </Link>
         <Link to="/pokemon/create/newPokemon">
           <li>CREATE</li>

@@ -47,6 +47,7 @@ function Create() {
   };
   return (
     <Style>
+      <h1>Create a new Pokemon!</h1>
       <form onSubmit={handleSubmit}>
         <FormDiv>
           <label>Name:</label>
@@ -159,12 +160,12 @@ function Create() {
               </Types>
             );
           })}
+          <input
+            type="submit"
+            value="Create"
+            // disabled={disabled}
+          />
         </FormDiv>
-        <input
-          type="submit"
-          value="Create"
-          // disabled={disabled}
-        />
       </form>
     </Style>
   );

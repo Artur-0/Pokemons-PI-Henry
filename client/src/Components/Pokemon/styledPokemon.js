@@ -35,7 +35,7 @@ export const Item = styled.div`
     color: aliceblue;
   }
   & li {
-    color: red;
+    color: yellow;
     list-style: none;
     margin-right: 50px;
   }

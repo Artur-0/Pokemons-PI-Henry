@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../Redux/Actions/actions";
+import { Styled } from "./styledFooter";
 
 function Pagination() {
   const dispatch = useDispatch();
@@ -21,15 +22,17 @@ function Pagination() {
   }, [state]);
 
   return (
-    <div>
-      <button
-        disabled={disablePrev}
-        onClick={() => {
-          dispatch(changePage("prev"));
-        }}
-      >
-        Previous
-      </button>
+    <Styled>
+      {state.pageNumber > 1 && (
+        <button
+          disabled={disablePrev}
+          onClick={() => {
+            dispatch(changePage("prev"));
+          }}
+        >
+          Previous
+        </button>
+      )}
 
       <p>{state.pageNumber}</p>
       {state.pageNumber < 4 && (
@@ -42,7 +45,7 @@ function Pagination() {
           Next
         </button>
       )}
-    </div>
+    </Styled>
   );
 }
 

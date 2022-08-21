@@ -31,22 +31,30 @@ router.post("/", async (req, res, next) => {
     req.body;
   await getTypes();
   try {
-    const newPokemon = await Pokemon.create({
-      name,
-      health,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
+    const exist = await Pokemon.findOne({
+      where: { name: name },
     });
-    const typesDb = await Type.findAll({
-      where: {
-        name: types,
-      },
-    });
-    newPokemon.addType(typesDb);
-    return res.status(200).send("Pokemon created successfully!");
+    console.log(exist);
+    if (!exist) {
+      const newPokemon = await Pokemon.create({
+        name,
+        health,
+        attack,
+        defense,
+        speed,
+        height,
+        weight,
+      });
+      const typesDb = await Type.findAll({
+        where: {
+          name: types,
+        },
+      });
+      newPokemon.addType(typesDb);
+      return res.status(200).send("Pokemon created successfully!");
+    } else {
+      return res.status(400).send("Pokemon already exists");
+    }
   } catch (error) {
     next(error);
   }

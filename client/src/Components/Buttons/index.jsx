@@ -7,96 +7,54 @@ import {
   sortByAttack,
   sortByName,
 } from "../../Redux/Actions/actions";
-import { LiButton } from "./styledButtons";
+import { Select, FilterSort, Choice } from "./styledButtons";
 
 function Buttons() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const [showButtonFilter, setShowButtonFilter] = useState(false);
-  const [showButtonSort, setShowButtonSort] = useState(false);
-  const [ascDsc, setAscDsc] = useState(true);
-  const handleFilter = (filter) => {
-    dispatch(filterPokemons(filter));
-  };
+  const [ascDsc, setAscDsc] = useState(false);
   useEffect(() => {
-    if (showButtonFilter) {
-      state.filteredPokemons.length < 1 &&
-        alert("This type of pokemon was not found, try another filter!");
+    dispatch(getTypes());
+  }, [dispatch]);
+  useEffect(() => {
+    if (state.error.length > 0) {
+      alert("pokemon not found");
     }
-  }, [state.filteredPokemons]);
+  }, [state.error]);
 
-  const handleSort = (order) => {
-    if (order === "name") {
-      dispatch(sortByName(ascDsc ? "dsc" : "asc"));
-      setAscDsc(!ascDsc);
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "name") {
+      return dispatch(sortByName(ascDsc ? "dsc" : "asc"));
+      // setAscDsc(!ascDsc);
     }
-    if (order === "attack") {
-      dispatch(sortByAttack(ascDsc ? "dsc" : "asc"));
-      setAscDsc(!ascDsc);
-    }
+    if (e.target.value === "attack") {
+      return dispatch(sortByAttack(ascDsc ? "asc" : "dsc"));
+      // setAscDsc(!ascDsc);
+    } else return dispatch(filterPokemons(e.target.value));
   };
 
   return (
-    <div>
-      {showButtonSort ? (
-        <>
-          {" "}
-          <button onClick={() => setShowButtonSort(!showButtonSort)}>
-            Sort
-          </button>
-          <ul>
-            <LiButton
-              onClick={() => {
-                handleSort("name");
-              }}
-            >
-              name
-            </LiButton>
-            <LiButton
-              onClick={() => {
-                handleSort("attack");
-              }}
-            >
-              attack
-            </LiButton>
-          </ul>
-        </>
-      ) : showButtonFilter ? (
-        <>
-          <button onClick={() => setShowButtonFilter(!showButtonFilter)}>
-            Filter
-          </button>
-          <ul>
-            <LiButton onClick={() => dispatch(filterPokemons("created"))}>
-              created
-            </LiButton>
-            <LiButton onClick={() => dispatch(filterPokemons("existing"))}>
-              existing
-            </LiButton>
-            {state.types.map((t) => {
-              return (
-                <LiButton key={t.id} onClick={() => handleFilter(t.name)}>
-                  {t.name}
-                </LiButton>
-              );
-            })}
-          </ul>
-        </>
-      ) : (
-        <>
-          <button onClick={() => setShowButtonSort(!showButtonSort)}>
-            Sort
-          </button>
-          <button
-            onClick={() =>
-              dispatch(getTypes()) && setShowButtonFilter(!showButtonFilter)
-            }
-          >
-            Filter
-          </button>
-        </>
-      )}
-    </div>
+    <FilterSort>
+      <Select name="sort" value="sort" onChange={(e) => handleChange(e)}>
+        <option>Sort by</option>
+        <option value="name">Name</option>
+        <option value="attack">Attack</option>
+      </Select>
+
+      <Select name="filter" value="filter" onChange={(e) => handleChange(e)}>
+        <option>Filter by</option>
+        <option value="created">Created</option>
+        <option value="original">Original</option>
+        {state.types.map((t) => {
+          return (
+            <option key={t.id} value={t.name}>
+              {t.name}
+            </option>
+          );
+        })}
+      </Select>
+    </FilterSort>
   );
 }
 
