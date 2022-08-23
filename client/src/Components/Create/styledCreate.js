@@ -13,7 +13,6 @@ export const Style = styled.div`
     left: 8%;
     display: block;
   }
-  /* width: 50vw; */
   & form {
     background-color: white;
     border-radius: 5px;

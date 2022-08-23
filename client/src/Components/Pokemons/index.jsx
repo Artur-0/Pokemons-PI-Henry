@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import defaultImg from "../../Assets/pikachu-ninja.jpg";
-import { Card, HomeStyle, Item } from "./styledPokemons";
+import { Card, Item } from "./styledPokemons";
 import { Link } from "react-router-dom";
 import Buttons from "../Buttons";
 import Pagination from "../../Footer";

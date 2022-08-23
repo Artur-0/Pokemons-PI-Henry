@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,12 +7,13 @@ import {
   sortByAttack,
   sortByName,
 } from "../../Redux/Actions/actions";
-import { Select, FilterSort, Choice } from "./styledButtons";
+import { Select, FilterSort } from "./styledButtons";
 
 function Buttons() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const [ascDsc, setAscDsc] = useState(false);
+  // const [ascDsc, setAscDsc] = useState(false);
+  const ascDsc = false;
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch]);

@@ -7,7 +7,7 @@ function Create() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTypes());
-  }, []);
+  }, [dispatch]);
   const pokemonsValidate = useSelector((state) => state.pokemons);
   const types = useSelector((state) => state.types);
   const [error, setError] = useState("");

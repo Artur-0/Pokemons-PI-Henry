@@ -12,11 +12,9 @@ import {
   POST_POKEMON,
 } from "./actionsTypes";
 
-const HOSTING = "http://localhost:3001";
-
 export const getPokemons = () => {
   return (dispatch) => {
-    return axios.get(`${HOSTING}/pokemons`).then((res) =>
+    return axios.get(`/pokemons`).then((res) =>
       dispatch({
         type: GET_POKEMONS,
         payload: res.data,
@@ -28,14 +26,14 @@ export const getPokemons = () => {
 export const searchPokemon = (name) => {
   return (dispatch) => {
     return axios
-      .get(`${HOSTING}/pokemons/?name=${name}`)
+      .get(`/pokemons/?name=${name}`)
       .then((res) => dispatch({ type: SEARCH_POKEMON, payload: res.data }));
   };
 };
 
 export const getPokemonById = (id) => {
   return (dispatch) => {
-    return axios.get(`${HOSTING}/pokemons/${id}`).then((res) =>
+    return axios.get(`/pokemons/${id}`).then((res) =>
       dispatch({
         type: GET_BY_ID,
         payload: res.data,
@@ -59,7 +57,7 @@ export const clean = () => {
 export const getTypes = () => {
   return (dispatch) => {
     return axios
-      .get(`${HOSTING}/types`)
+      .get(`/types`)
       .then((res) => dispatch({ type: GET_TYPES, payload: res.data }));
   };
 };
@@ -87,7 +85,7 @@ export const changePage = (prevNext) => {
 
 export function postPokemon(newPokemon) {
   return async function (dispatch) {
-    return axios.post(`${HOSTING}/pokemons`, newPokemon).then((res) =>
+    return axios.post(`/pokemons`, newPokemon).then((res) =>
       dispatch({
         type: POST_POKEMON,
         payload: res.data,

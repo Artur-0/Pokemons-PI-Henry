@@ -29,18 +29,24 @@ export const reducer = (state = initalState, { type, payload }) => {
         ...state,
         pokemons: payload,
         error: [],
+        page: [0, 12],
+        pageNumber: 1,
       };
     case SEARCH_POKEMON:
       return {
         ...state,
         pokemon: payload,
         error: [],
+        page: [0, 12],
+        pageNumber: 1,
       };
     case GET_BY_ID:
       return {
         ...state,
         pokemon: payload,
         error: [],
+        page: [0, 12],
+        pageNumber: 1,
       };
 
     case FILTER_POKEMONS:
@@ -64,8 +70,16 @@ export const reducer = (state = initalState, { type, payload }) => {
             ...state,
             filteredPokemons: filteredPokemons,
             error: [],
+            page: [0, 12],
+            pageNumber: 1,
           }
-        : { ...state, filteredPokemons: [], error: [Math.random()] };
+        : {
+            ...state,
+            filteredPokemons: [],
+            error: [Math.random()],
+            page: [0, 12],
+            pageNumber: 1,
+          };
     case CLEAN_POKEMONS:
       return {
         ...state,
@@ -96,11 +110,15 @@ export const reducer = (state = initalState, { type, payload }) => {
             ...state,
             filteredPokemons: sortedByName,
             error: [],
+            page: [0, 12],
+            pageNumber: 1,
           }
         : {
             ...state,
             pokemons: sortedByName,
             error: [],
+            page: [0, 12],
+            pageNumber: 1,
           };
     case SORT_BY_ATTACK:
       let sortedByAttack = state.filteredPokemons.length
@@ -118,11 +136,15 @@ export const reducer = (state = initalState, { type, payload }) => {
             ...state,
             filteredPokemons: sortedByAttack,
             error: [],
+            page: [0, 12],
+            pageNumber: 1,
           }
         : {
             ...state,
             pokemons: sortedByAttack,
             error: [],
+            page: [0, 12],
+            pageNumber: 1,
           };
     case CHANGE_PAGE:
       const page =

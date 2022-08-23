@@ -11,7 +11,7 @@ function Pokemon() {
   const pokemon = useSelector((state) => state.pokemon);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (pokemon) {
+    if (pokemon.name) {
       setIsLoading(false);
     }
   }, [pokemon]);
@@ -21,11 +21,7 @@ function Pokemon() {
   }, [dispatch, params]);
   return (
     <Style>
-      {isLoading ? (
-        <Loading />
-      ) : !isLoading && !pokemon.name ? (
-        <h1>Pokemon not found</h1>
-      ) : !isLoading ? (
+      {!isLoading ? (
         <Card>
           <Item>
             <img src={pokemon.image} alt="pokemon" />
