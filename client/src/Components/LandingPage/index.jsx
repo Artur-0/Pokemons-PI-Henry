@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Landing } from "./styled-Lp";
 // import Sound from "../Sound";
@@ -15,6 +15,11 @@ function LandingPage() {
     muted ? play() : pause();
     setMuted(!muted);
   };
+  useEffect(() => {
+    alert(
+      "not responsive YET, set your browser with 133% zoom for a better experience"
+    );
+  }, []);
   return (
     <Landing>
       <MuteBtn onClick={onClickHandler}>
