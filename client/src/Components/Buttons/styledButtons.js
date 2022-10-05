@@ -11,7 +11,7 @@ export const Select = styled.select`
   font-size: 14px;
   border: none;
   margin-left: 20px;
-  margin-top: 3px;
+  margin-top: 15vh;
 
   option {
     color: black;

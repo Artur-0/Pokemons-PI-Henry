@@ -7,7 +7,7 @@ export const Style = styled.div`
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   /* margin-top: -5vh; */
 `;
 
@@ -16,7 +16,7 @@ export const Card = styled.div`
   font-family: "Fredoka One", cursive;
   /* border: 2px solid black; */
   position: absolute;
-  margin-top: 2.5vh;
+  margin-top: 10vh;
   margin-left: 30vw;
   width: 30vw;
 `;

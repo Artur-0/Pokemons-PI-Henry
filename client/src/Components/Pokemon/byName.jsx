@@ -5,6 +5,8 @@ import { searchPokemon } from "../../Redux/Actions/actions";
 import { Card, Item, Style } from "./styledPokemon";
 import Loading from "../Loading/index.jsx";
 
+import defaultImg from "../../Assets/pikachu-ninja.jpg";
+
 function Pokemon() {
   const dispatch = useDispatch();
   const params = useParams();
@@ -24,10 +26,18 @@ function Pokemon() {
       {!isLoading ? (
         <Card>
           <Item>
-            <img src={pokemon.image} alt="pokemon" />
+            <img
+              src={pokemon.image ? pokemon.image : defaultImg}
+              alt="pokemon"
+            />
             <h1>{pokemon.name}</h1>
             <ul>
-              <li>types: {pokemon.types + " "}</li>
+              <li>
+                types:{" "}
+                {pokemon.types.name
+                  ? pokemon.types + " "
+                  : pokemon.types.map((t) => t.name)}
+              </li>
               <li>health: {pokemon.health}</li>
               <li>attack: {pokemon.attack}</li>
               <li>defense: {pokemon.defense}</li>

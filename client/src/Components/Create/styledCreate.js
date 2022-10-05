@@ -5,7 +5,7 @@ export const Style = styled.div`
   background-image: url(${backgroundPikachu});
   background-size: cover;
   margin-top: 0vh;
-  height: 90vh;
+  height: 100vh;
   font-family: "Fredoka One", cursive;
   & h1 {
     margin-top: 15vh;
@@ -23,7 +23,7 @@ export const Style = styled.div`
     /* padding-bottom: 3%; */
     position: absolute;
     margin-bottom: 2%;
-    margin-top: 1%;
+    margin-top: 6%;
     padding-right: -3%;
     color: white;
     background: linear-gradient(315deg, #756213 10%, #000000 99%);
