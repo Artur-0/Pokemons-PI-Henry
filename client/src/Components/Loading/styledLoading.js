@@ -6,7 +6,7 @@ export const LoadingDiv = styled.div`
   background-image: url(${Loading});
   background-position: left;
   /* margin-top: -10vh; */
-  height: 90vh;
+  height: 100vh;
   & h1 {
     /* display: table; */
     /* border-radius: 25px; */

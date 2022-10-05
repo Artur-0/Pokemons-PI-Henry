@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
+  position: fixed;
   background-color: #d2a813;
   background-image: linear-gradient(315deg, #d2a813 0%, #000000 34%);
   height: 10vh;
+  width: 100%;
   font-family: "Fredoka One", cursive;
   & ul {
     display: flex;
