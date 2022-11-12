@@ -15,11 +15,6 @@ function LandingPage() {
     muted ? play() : pause();
     setMuted(!muted);
   };
-  useEffect(() => {
-    alert(
-      "not responsive YET, set your browser with 133% zoom for a better experience"
-    );
-  }, []);
   return (
     <Landing>
       <MuteBtn onClick={onClickHandler}>
