@@ -85,7 +85,7 @@ export const Button = styled.button`
 
   /* text-align: center; */
   font-family: "Fredoka One", cursive;
-  font-size: 2vh;
+  font-size: 5vh;
   /* margin: 0;*/
   position: relative;
   top: 55vh;
