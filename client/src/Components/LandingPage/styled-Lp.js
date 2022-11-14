@@ -10,40 +10,67 @@ export const Landing = styled.div`
   height: 100vh;
   width: 100vw;
 
-  & h1 {
-    font-size: 15vh;
-    font-family: "Fredoka One", cursive;
-    position: absolute;
-    color: black;
-    top: 4vh;
-    left: 15vw;
-    /* animation: maquina 5s infinite steps(46); */
-  }
-  & p {
-    display: table;
-    border-radius: 25px;
-    /* text-shadow: 0.8px 0.8px 0.8px rgba(0, 0, 0, 0.39); */
-    /* background-color: red; */
-    /* color: black; */
-    position: absolute;
-    top: 40vh;
-    left: 10vw;
-    /* height: 4rem; */
-    /* width: 50%; */
-    /* padding: 10px 20px; */
-    font-family: "Fredoka One", cursive;
-    font-size: 3vh;
-    /* text-shadow: black; */
-    /* border-left: 1px solid transparent; */
-    animation: text 1s infinite steps(10);
-  }
-  @keyframes text {
-    from {
+  @media screen and (max-width: 400px) {
+    h1 {
+      font-size: 305%;
+      font-family: "Fredoka One", cursive;
+      /* position: absolute; */
       color: black;
+      position: fixed;
+      left: 5%;
+      top: 7%;
     }
+    p {
+      display: table;
+      border-radius: 25px;
+      position: relative;
+      top: 40vh;
+      /* left: 10vw; */
+      display: flex;
+      font-family: "Fredoka One", cursive;
+      font-size: 3vh;
+      animation: text 1s infinite steps(10);
+    }
+    @keyframes text {
+      from {
+        color: black;
+      }
 
-    to {
-      color: red;
+      to {
+        color: red;
+      }
+    }
+  }
+  @media screen and (min-width: 401px) {
+    h1 {
+      font-size: 415%;
+      font-family: "Fredoka One", cursive;
+      position: absolute;
+      color: black;
+      top: 15%;
+      left: 21%;
+      /* animation: maquina 5s infinite steps(46); */
+    }
+    p {
+      display: table;
+      border-radius: 25px;
+
+      position: absolute;
+      top: 40vh;
+      left: 10vw;
+
+      font-family: "Fredoka One", cursive;
+      font-size: 3vh;
+      animation: text 1s infinite steps(10);
+    }
+    @keyframes text {
+      from {
+        color: black;
+      }
+
+      to {
+        color: red;
+      }
     }
   }
 `;

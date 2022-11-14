@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  margin-top: -47px;
+  margin-top: -60px;
 
   font-family: "Fredoka One", cursive;
   & input {

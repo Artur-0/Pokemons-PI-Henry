@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   font-family: "Fredoka One", cursive;
   & ul {
     display: flex;
-    margin-top: -13vh;
+    margin-top: -10vh;
     margin-left: 65vw;
 
     color: white;
@@ -24,6 +24,6 @@ export const Nav = styled.nav`
   }
   & img {
     margin-left: -86vw;
-    height: 47px;
+    height: 10vh;
   }
 `;
